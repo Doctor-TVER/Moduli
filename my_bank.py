@@ -1,18 +1,5 @@
 score_sum = 0
 history = []
-
-
-def buy(score_sum) :
-    cost = int(input('Введите сумму покупки: '))
-    if cost > score_sum:
-        print('На вашем счете недостаточно средств!')
-    else:
-        score_sum -= cost
-        name = input('Введите имя покупки: ')
-        history.append((name, cost))
-    return score_sum
-
-
 while True:
     print('1. пополнение счета')
     print('2. покупка')

@@ -43,6 +43,7 @@
 После выполнения какого либо из пунктов снова возвращаемся в меню, пока пользователь не выберет выход"""
 import os
 import shutil
+import game_function
 while True:
     print('1. создать папку')
     print('2. удалить (файл/папку)')
@@ -53,8 +54,9 @@ while True:
     print('7. просмотр информации об операционной системе')
     print('8. создатель программы')
     print('9. играть в викторину')
-    print('10. смена рабочей директории')
-    print('11. выход')
+    print('10. мой банковский счет')
+    print('11. смена рабочей директории')
+    print('12. выход')
     # print(f'На вашем счете {score_sum}')
 
     choice = input('Выберите пункт меню')
@@ -76,9 +78,31 @@ while True:
     elif choice == '3':
         real_dir = input('Введите название папки или файла, который копируем: ')
         copy_dir = input('Введите новое название папки или файла: ')
-        shutil.move(f'{real_dir}.py, {copy_dir}.py')
-
-    # elif choice == '4':
-    #     break
-    # else:
-    #     print('Неверный пункт меню')
+        shutil.copytree(real_dir, copy_dir)
+    elif choice == '4':
+        print(os.listdir())
+    elif choice == '5':
+        print(os.listdir())
+        for something in os.listdir():
+            if os.path.isdir(something):
+                print(something)
+    elif choice == '6':
+        print(os.listdir())
+        for something in os.listdir():
+            if os.path.isfile(something):
+                print(something)
+    elif choice == '7':
+        print(os.uname())
+    elif choice == '8':
+        print('Создатель программы - Юрик')
+    elif choice == '9':
+        game_function.victory()
+    elif choice == '10':
+        game_function.my_bank_score()
+    elif choice == '11':
+        new_dir = input('Введите путь к папке: ')
+        os.chdir(new_dir)
+    elif choice == '12':
+         break
+    else:
+         print('Неверный пункт меню')
