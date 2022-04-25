@@ -42,6 +42,7 @@
 Так же можно добавить любой другой интересный или полезный функционал по своему желанию
 После выполнения какого либо из пунктов снова возвращаемся в меню, пока пользователь не выберет выход"""
 import os
+import shutil
 while True:
     print('1. создать папку')
     print('2. удалить (файл/папку)')
@@ -72,8 +73,11 @@ while True:
             os.rmdir(f'new{name_dir_del}')
         else:
             print('Такая папка или файл не найден')
-    # elif choice == '3':
-    #     print(history)
+    elif choice == '3':
+        real_dir = input('Введите название папки или файла, который копируем: ')
+        copy_dir = input('Введите новое название папки или файла: ')
+        shutil.move(f'{real_dir}.py, {copy_dir}.py')
+
     # elif choice == '4':
     #     break
     # else:
