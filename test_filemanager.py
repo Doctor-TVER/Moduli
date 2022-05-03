@@ -3,6 +3,7 @@ import os
 import platform
 from game_function import *
 import random
+from step_1 import save_work_dir
 
 def test_filenames():
     result = []
@@ -59,7 +60,22 @@ def test_run_victory():
                   'Чуковский': '31.03.1882', 'Смоктуновский': '28.03.1925', 'Шаляпин': '13.02.1873',
                   'Матросов': '05.02.1924'
                   }
-    random_famous = random.sample(FAMOUS.keys(), 5)
-    assert len(random_famous(FAMOUS, 5)) == 5
+    random_famous = random.sample(list(FAMOUS.keys()), 5)
+    assert len(random_famous) == 5
+
+
+def test_save_work_dir():
+    # CONTENT_DIR = 'listdir.txt'
+    save_file = []
+    save_folder = []
+    # with open(CONTENT_DIR, 'w') as f:
+    for item in os.listdir():
+
+        if os.path.isfile(item):
+            save_file.append(item)
+        else:
+            save_folder.append(item)
+    # assert list(os.listdir()) == save_file + save_folder
+    assert save_work_dir() == save_file.append(save_folder)
 
 
