@@ -173,23 +173,22 @@ def change_work_dir(new_dir):
 
 
 def save_work_dir():
-    filemanager.save_dir()
-    # CONTENT_DIR = 'listdir.txt'
-    # save_file = []
-    # save_folder = []
-    # with open(CONTENT_DIR, 'w') as f:
-    #     for item in os.listdir():
-    #         if os.path.isfile(item):
-    #             save_file.append(item)
-    #         else:
-    #             save_folder.append(item)
+    CONTENT_DIR = 'listdir.txt'
+    save_file = []
+    save_folder = []
+    with open(CONTENT_DIR, 'w') as f:
+        for item in os.listdir():
+            if os.path.isfile(item):
+                save_file.append(item)
+            else:
+                save_folder.append(item)
     with open(CONTENT_DIR, 'r') as f:
 
         for order in f:
             print(f'files: {save_file}')
-            print(f'files: {save_folder}')
-    # print(f'files: {save_file}')
-    # print(f'files: {save_folder}')
+            print(f'dirs: {save_folder}')
+    print(f'files: {save_file}')
+    print(f'dirs: {save_folder}')
 
 
 # Словарь действия связывает название пункта меню с той функцией которую нужно выполнить
