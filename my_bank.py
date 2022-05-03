@@ -60,8 +60,23 @@ def run_bill():
     Функция запускает программу личный счет
     :return:
     """
-    bill_sum = 0
+    import os
+
+    BUY_NAME = 'orders.txt'
+    BILL_NAME = 'bill_sum.txt'
+
     history = []
+
+    if os.path.exists(BUY_NAME):
+        with open(BUY_NAME, 'r') as f:
+            for order in f:
+                history.append(order.replace('\n', ''))
+    if os.path.exists(BILL_NAME):
+        with open(BILL_NAME, 'r') as b:
+            bill_sum = int(b.read())
+    else:
+        bill_sum = 0
+
 
     while True:
         print('1. пополнение счета')
@@ -85,6 +100,11 @@ def run_bill():
         elif choice == '3':
             print(history)
         elif choice == '4':
+            with open(BUY_NAME, 'w') as f:
+                for order in history:
+                    f.write(f'{order}\n')
+            with open(BILL_NAME, 'w') as b:
+                    b.write(f'{bill_sum}')
             break
         else:
             print('Неверный пункт меню')

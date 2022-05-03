@@ -52,12 +52,14 @@ import filemanager
 from my_bank import run_bill
 # Викторина
 from game_function import run_victory
+import os
 
 # Названия пунктов меню
 CREATE_FOLDER = 'Создать папку'
 DELETE_FOLDER = 'Удалить файл/папку'
 COPY_FILE_FOLDER = 'Копировать (файл/папку)'
 VIEWING_FOLDER = 'Просмотр содержимого рабочей директории'
+SAVE_WORK_DIR_TO_FILE = 'Cохранить содержимое рабочей директории в файл'
 SHOW_FOLDER = 'Посмотреть только папки'
 SHOW_FILES = 'Посмотреть только файлы'
 VIEW_OPER_SYSTEM = 'Просмотр информации об операционной системе'
@@ -73,6 +75,7 @@ menu_items = (
     DELETE_FOLDER,
     COPY_FILE_FOLDER,
     VIEWING_FOLDER,
+    SAVE_WORK_DIR_TO_FILE,
     SHOW_FOLDER,
     SHOW_FILES,
     VIEW_OPER_SYSTEM,
@@ -169,12 +172,33 @@ def change_work_dir(new_dir):
     filemanager.change_dir(new_dir)
 
 
+def save_work_dir():
+    filemanager.save_dir()
+    # CONTENT_DIR = 'listdir.txt'
+    # save_file = []
+    # save_folder = []
+    # with open(CONTENT_DIR, 'w') as f:
+    #     for item in os.listdir():
+    #         if os.path.isfile(item):
+    #             save_file.append(item)
+    #         else:
+    #             save_folder.append(item)
+    with open(CONTENT_DIR, 'r') as f:
+
+        for order in f:
+            print(f'files: {save_file}')
+            print(f'files: {save_folder}')
+    # print(f'files: {save_file}')
+    # print(f'files: {save_folder}')
+
+
 # Словарь действия связывает название пункта меню с той функцией которую нужно выполнить
 actions = {
     CREATE_FOLDER: create_a_folder,
     DELETE_FOLDER: delete_a_folder,
     COPY_FILE_FOLDER: copy_file_or_folder,
     VIEWING_FOLDER: view_directory,
+    SAVE_WORK_DIR_TO_FILE: save_work_dir,
     SHOW_FOLDER: print_folder,
     SHOW_FILES: print_files,
     VIEW_OPER_SYSTEM: view_operation_system,

@@ -71,3 +71,18 @@ def view_folder():
 
 def change_dir(new_dir):
     os.chdir(new_dir)
+
+
+def save_dir():
+    CONTENT_DIR = 'listdir.txt'
+    save_file = []
+    save_folder = []
+    with open(CONTENT_DIR, 'w') as f:
+        for item in os.listdir():
+            if os.path.isfile(item):
+                save_file.append(item)
+            else:
+                save_folder.append(item)
+
+
+
