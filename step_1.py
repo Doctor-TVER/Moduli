@@ -115,7 +115,7 @@ def copy_file_or_folder():
     """
     # спрашиваем имя и новое имя
     name = input('Введите имя файла')
-    new_name = input('Введите имя копиии')
+    new_name = input('Введите имя копии')
     # копируем
     filemanager.copy_file_or_directory(name, new_name)
 
@@ -215,7 +215,7 @@ def print_menu():
     :return: None
     """
     print(separator())
-    # Выводим названи пункта меню и цифру начиная с 1
+    # Выводим название пункта меню и цифру начиная с 1
     for number, item in enumerate(menu_items, 1):
         print(f'{number}) {item}')
     print(separator())
